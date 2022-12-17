@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Building";
+    ViewData["Slug1"] = "QUẢN LÝ BUILDING";
+    ViewData["Slug2"] = "Quản lý building";
+
+    Pager pager = new Pager();
+    int pageNo = 0;
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.currentPage;
+    }
+
+}
+<style>
+    td {
+        text-align: center;
+    }
+</style>
+@model List<Building>
+<div class="table-responsive" id="block">
+    <table class="table" style="margin-top: 20px; background-color:white; ">
+        <tr>
+            <td colspan="4">
+               
+            </td>
+            <td>
+                <a asp-controller="building" asp-action="insert" class="btn btn-primary">Thêm</a>
+            </td>
+        </tr>
+        <tr style="background-color: #b4dca4; ">
+            <td><strong>ID tòa nhà</strong></td>
+            <td><strong>Tên tòa nhà</strong></td>
+            <td><strong>Địa chỉ</strong></td>
+            <td><strong>Mô tả</strong></td>
+            <td></td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IDBD</td>
+                <td>@item.buildingName</td>
+                <td>@item.address</td>
+                <td>@item.buildingDesc</td>
+                <td>
+                    <a class="btn btn-warning" asp-controller="building" asp-action="update" asp-route-id="@item.IDBD">Cập nhật</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<nav aria-label="Page navigation example" style="float: right;">
+    <ul class="pagination justify-content-center">
+        @for (var pge = pager.startPage; pge <= pager.endPage; pge++)
+        {
+            <li class="page-item @(pge==pager.currentPage ? "active" : "")">
+                <a class="page-link" asp-controller="building"  asp-action="Pagination" asp-route-pg="@pge" >@pge</a>
+            </li>
+        }
+    </ul>
+</nav>

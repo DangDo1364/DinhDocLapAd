@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Node";
+    ViewData["Slug1"] = "QUẢN LÝ NODE";
+    ViewData["Slug2"] = "Quản lý node";
+}
+@model Node
+@{ 
+    int IDN = @Model.IDN;
+}
+<h3 style="text-align: center; margin-bottom: 10px; margin-top:20px;">Cập nhật Node</h3>
+<div class="container">
+    <form asp-controller= "node" asp-action="UpdateNode" asp-route-idn = "@IDN" method="post">
+        <div class=row>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label>Tọa độ X</label>
+                    <input type="text" class="form-control" id="x" name="x" value="@Model.x" required>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label>Tọa độ Y</label>
+                    <input type="text" class="form-control" id="y" name="y" value="@Model.y" required>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label>Tọa độ Z</label>
+                    <input type="text" class="form-control" id="z" name="z" value="@Model.z" required>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success" id="submit" value="Thêm">Submit</button>
+        <a asp-controller="node" asp-action="index" style="float:right;">Back</a>
+    </form>
+</div>

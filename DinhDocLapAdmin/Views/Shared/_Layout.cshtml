@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <style>
+    </style>
+    <script>
+        $(function () {
+            // Sidebar toggle behavior
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+            });
+        });
+        $(function () {
+            // Sidebar toggle behavior
+            document.getElementById("sidebarCollapse").onmouseover = function () {
+                $('#sidebar, #content').toggleClass('active');
+            };
+        });
+
+    </script>
+</head>
+<body>
+    <div class="vertical-nav bg-white" id="sidebar" style="overflow: scroll">
+        <div class="py-4 px-3 mb-4 bg-light">
+            <div class="media d-flex align-items-center">
+                <div class="media-body">
+                    <h6><i class="fas fa-cog"></i> @ViewData["Slug1"]</h6>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">BẢNG ĐIỀU KHIỂN</p>
+        <ul class="nav flex-column bg-white mb-0">
+            <li class="nav-item">
+                <a asp-controller="node" asp-action="index" class="nav-link text-dark font-italic bg-light">
+                    Quản lý Node
+                </a>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="face" asp-action="index" class="nav-link text-dark font-italic bg-light">
+                    Quản lý Face
+                </a>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="facenode" asp-action="index" class="nav-link text-dark font-italic bg-light">
+                    Quản lý FaceNode
+                </a>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="block" asp-action="index" class="nav-link text-dark font-italic bg-light">
+                    Quản lý Block
+                </a>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="faceblock" asp-action="index" class="nav-link text-dark font-italic bg-light">
+                    Quản lý FaceBlock
+                </a>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="blocktype" asp-action="index" class="nav-link text-dark font-italic bg-light">
+                    Quản lý BlockType
+                </a>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="building" asp-action="index" class="nav-link text-dark font-italic bg-light">
+                    Quản lý Building
+                </a>
+            </li>
+        </ul>
+  
+        <ul class="nav flex-column bg-white mb-0">
+           
+        </ul>
+    </div>
+    <!-- End vertical navbar -->
+    <!-- Page content holder -->
+    <div class="page-content p-5" id="content">
+        <!-- Toggle button -->
+        <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4">
+            <i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold"></small>
+        </button>
+        <!--  <div class="separator">
+        </div>
+        -->
+        <div class="row text-white">
+            <div class="col">
+                @RenderBody()
+            </div>
+        </div>
+
+    </div>
+    <!-- End demo content -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

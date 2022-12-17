@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Face";
+    ViewData["Slug1"] = "QUẢN LÝ FACE";
+    ViewData["Slug2"] = "Quản lý Face";    
+}
+@model List<Node>
+<h3 style="text-align: center; margin-bottom: 10px; margin-top:20px;">Thêm Face</h3>
+<div class="container">
+    <form  asp-controller="face" asp-action="InsertFace" method="post">
+        <div class=row>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Tên Face:</label>
+                    <input type="text" class="form-control" id="facename" name="facename" required>
+                </div>
+            </div>     
+        </div>
+        <div class=row>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Node from:</label>
+                    <input type="text" class="form-control" id="idnodefrom" name="idnodefrom">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Node to:</label>
+                    <input type="text" class="form-control" id="idnodeto" name="idnodeto">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success" id="submit" value="Thêm">Submit</button>
+        <a asp-controller="face" asp-action="index" style="float:right;">Quay lại</a>
+    </form>
+</div>

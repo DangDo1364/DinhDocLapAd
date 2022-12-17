@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Face";
+    ViewData["Slug1"] = "QUẢN LÝ FACE";
+    ViewData["Slug2"] = "Quản lý Face";
+}
+@model FaceNode
+<h3 style="text-align: center; margin-bottom: 10px; margin-top:20px;">Cập nhật FaceNode</h3>
+<div class="container">
+    <form asp-controller="face" asp-action="UpdateFace" asp-route-idf="@Model.IDF"asp-route-idn="@Model.IDN" method="post">
+        <div class=row>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label>ID Face:</label>
+                    <input type="text" class="form-control" id="idf" name="idf" value="@Model.IDF" required>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label>ID Face:</label>
+                    <input type="text" class="form-control" id="idn" name="idn" value="@Model.IDN" required>
+                </div>
+            </div>
+            @{ // đang làm update facenode
+            }
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label>Thứ tự:</label>
+                    <input type="text" class="form-control" id="seq" name="seq" value="@Model.seq" required>
+                </div>
+            </div>
+        </div>     
+        <button type="submit" class="btn btn-success" id="submit" value="Thêm">Submit</button>
+        <a asp-controller="facenode" asp-action="index" style="float:right;">Back</a>
+    </form>
+</div>

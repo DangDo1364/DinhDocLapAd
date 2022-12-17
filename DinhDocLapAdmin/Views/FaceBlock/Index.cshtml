@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "FaceBlock";
+    ViewData["Slug1"] = "QUẢN LÝ FACEBLOCK";
+    ViewData["Slug2"] = "Quản lý FaceBlock";
+
+    Pager pager = new Pager();
+    int pageNo = 0;
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.currentPage;
+    }
+
+}
+<style>
+    td {
+        text-align: center;
+    }
+</style>
+@model List<FaceBlock>
+
+<div class="table-responsive" id="category">
+    <table class="table" style="margin-top: 20px; background-color:white; ">    
+        <tr style="background-color: #b4dca4; ">
+            <td><strong>ID Face</strong></td>
+            <td><strong>ID Block</strong></td>
+            <td></td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IDF</td>
+                <td>@item.IDB</td>
+                <td>
+                    <a class="btn btn-warning" asp-controller="faceblock" asp-action="update" asp-route-idf="@item.IDF"asp-route-idn="@item.IDB">Cập nhật</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<nav aria-label="Page navigation example" style="float: right;">
+    <ul class="pagination justify-content-center">
+        @for (var pge = pager.startPage; pge <= pager.endPage; pge++)
+        {
+            <li class="page-item @(pge==pager.currentPage ? "active" : "")">
+                <a class="page-link" asp-controller="faceblock"  asp-action="Pagination" asp-route-pg="@pge" >@pge</a>
+            </li>
+        }
+    </ul>
+</nav>
